@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% * 880 / 1280);
+    margin: 66px 0 60px 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 935px) {
+    .footer {
+        margin: 48px 0 36px 0;
+        width: 88.125%;
+    }    
+}

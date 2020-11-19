@@ -1,0 +1,26 @@
+.profile__info {
+    display: grid;
+    grid-template-columns: repeat(2, fit-content);
+    grid-template-rows: repeat(2, max-content);
+    grid-template-areas:
+        'title button'
+        'subtitle subtitle';
+    row-gap: 16px;
+    column-gap: 18px;
+    align-items: flex-end;
+    margin: auto auto auto 30px;
+}
+
+@media screen and (max-width: 935px) {
+    .profile__info {
+        align-items: center;
+        margin: 26px auto 0 auto;
+    }    
+}
+
+@media screen and (max-width: 510px) {
+    .profile__info {
+        column-gap: 10px;
+        row-gap: 14px;
+    }    
+}

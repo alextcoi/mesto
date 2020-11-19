@@ -1,0 +1,12 @@
+.element__pic {
+    width: 282px;
+    height: 282px;
+
+    border-radius: 10px 10px 0px 0px;
+}
+
+@media screen and (max-width: 320px) {
+    .element__pic {
+        width: 100%;
+    }    
+}
