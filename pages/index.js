@@ -1,5 +1,5 @@
 
-let editButton = document.querySelector('.edit-button__container');
+let editButton = document.querySelector('.edit-button');
 let closeButton = document.querySelector('.close-button');
 let form = document.querySelector('.form');
 let name = document.getElementById('name');
@@ -10,10 +10,10 @@ let formProfession = document.getElementById('formProfession');
 function openForm() {
     formName.setAttribute('value', name.textContent);
     formProfession.setAttribute('value', profession.textContent);
-    form.classList.remove('form__opened');
+    form.classList.remove('form_opened');
 }
 function closeForm() {
-    form.classList.add('form__opened');
+    form.classList.add('form_opened');
 }
 
 editButton.addEventListener('click', openForm);
