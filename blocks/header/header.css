@@ -5,6 +5,7 @@
     width: calc(100% * 880 / 1280);
     margin: 45px auto 0 auto;
     padding: 0;
+    border-bottom: 1px solid #545454;;
 }
 
 @media screen and (max-width: 935px) {

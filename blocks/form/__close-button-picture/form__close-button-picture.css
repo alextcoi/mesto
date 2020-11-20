@@ -1,0 +1,9 @@
+.form__close-button-picture {
+    height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .form__close-button-picture {
+        height: 26px;
+    }
+}

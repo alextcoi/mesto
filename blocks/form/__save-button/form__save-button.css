@@ -1,4 +1,4 @@
-.save-button {
+.form__save-button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,12 +13,12 @@
     transition: background-color .5s ease-out;
 }
 
-.save-button:hover {
+.form__save-button:hover {
     background-color: rgba(0, 0, 0, .8);
 }
 
 @media screen and (max-width: 768px) {
-    .save-button {
+    .form__save-button {
         width: 238px;
         margin: 45px auto 25px auto;
     }

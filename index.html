@@ -18,74 +18,90 @@
             <img class="profile__avatar" src="./images/profile.jpg" alt="Жак-Ив Кусто">
             <div class="profile__info">
                 <h1 id="name" class="profile__title">Жак-Ив Кусто</h1>
-                <div class="edit-button">
-                    <img class="edit-button__picture" src="./images/edit_button.svg" alt="Кнопка Редактировать">
-                </div>
+                <button type="button" class="profile__edit-button">
+                    <img class="profile__edit-button-picture" src="./images/edit_button.svg" alt="Кнопка Редактировать">
+                </button>
                 <p id="profession" class="profile__subtitle">Исследователь океана</p>
             </div>
-            <div class="add-button">
-                <img class="add-button__picture" src="./images/add_button.svg" alt="Кнопка Добавить">
-            </div>
+            <button type="button" class="profile__add-button">
+                <img class="profile__add-button-picture" src="./images/add_button.svg" alt="Кнопка Добавить">
+            </button>
         </section>
         <section class="elements">
-            <div class="element">
-                <img class="element__pic" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                <div class="element__descrip">
-                    <h2 class="element__text">Карачаевск</h2>
-                    <img class="like" src="./images/like.svg" alt="Лайк в виде сердца">
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__pic" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                <div class="element__descrip">
-                    <h2 class="element__text">Гора Эльбрус</h2>
-                    <img class="like" src="./images/like.svg" alt="Лайк в виде сердца">
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__pic" src="./images/dombay.jpg" alt="Домбай">
-                <div class="element__descrip">
-                    <h2 class="element__text">Домбай</h2>
-                    <img class="like" src="./images/like.svg" alt="Лайк в виде сердца">
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__pic" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                <div class="element__descrip">
-                    <h2 class="element__text">Гора Эльбрус</h2>
-                    <img class="like" src="./images/like.svg" alt="Лайк в виде сердца">
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__pic" src="./images/dombay.jpg" alt="Домбай">
-                <div class="element__descrip">
-                    <h2 class="element__text">Домбай</h2>
-                    <img class="like" src="./images/like.svg" alt="Лайк в виде сердца">
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__pic" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесск">
-                <div class="element__descrip">
-                    <h2 class="element__text">Карачаево-Черкесск</h2>
-                    <img class="like" src="./images/like.svg" alt="Лайк в виде сердца">
-                </div>
-            </div>
-        </section>
-        <section class="form form_opened">
-            <form class="form__container">
-                <h2 class="form__title">Редактировать профиль</h2>
-                <input id="formName" class="form__item" type="text" placeholder="Имя">
-                <div class="form__line"></div>
-                <input id="formProfession" class="form__item" type="text" placeholder="О себе">
-                <div class="form__line"></div>
-                <button type="submit" class="save-button">Сохранить</button>
-                <img class="close-button" src="images/close_icon.svg" alt="Кнопка закрытия">
-            </form>
-        </section>
+            <ul class="elements__container">
+                <li class="element">
+                    <img class="element__pic" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                    <div class="element__descrip">
+                        <h2 class="element__text">Карачаевск</h2>
+                        <button type="button" class="element__button">
+                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
+                        </button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__pic" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                    <div class="element__descrip">
+                        <h2 class="element__text">Гора Эльбрус</h2>
+                        <button type="button" class="element__button">
+                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
+                        </button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__pic" src="./images/dombay.jpg" alt="Домбай">
+                    <div class="element__descrip">
+                        <h2 class="element__text">Домбай</h2>
+                        <button type="button" class="element__button">
+                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
+                        </button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__pic" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                    <div class="element__descrip">
+                        <h2 class="element__text">Гора Эльбрус</h2>
+                        <button type="button" class="element__button">
+                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
+                        </button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__pic" src="./images/dombay.jpg" alt="Домбай">
+                    <div class="element__descrip">
+                        <h2 class="element__text">Домбай</h2>
+                        <button type="button" class="element__button">
+                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
+                        </button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img class="element__pic" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесск">
+                    <div class="element__descrip">
+                        <h2 class="element__text">Карачаево-Черкесск</h2>
+                        <button type="button" class="element__button">
+                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </section>       
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <script src="./pages/index.js"></script>
+    <section class="form">
+        <form name="profile-form" class="form__container">
+            <h2 class="form__title">Редактировать профиль</h2>
+            <input name="form_name" id="form-name" class="form__item" type="text" placeholder="Имя">
+            <div class="form__line"></div>
+            <input name="form_profession" id="form-profession" class="form__item" type="text" placeholder="О себе">
+            <div class="form__line"></div>
+            <button type="submit" class="form__save-button">Сохранить</button>
+            <button type="button" class="form__close-button">
+                <img class="form__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
+            </button>
+        </form>
+    </section>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
