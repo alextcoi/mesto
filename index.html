@@ -28,66 +28,33 @@
         </section>
         <section class="elements">
             <ul class="elements__container">
-                <li class="element">
-                    <img class="element__pic" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__descrip">
-                        <h2 class="element__text">Карачаевск</h2>
-                        <button type="button" class="element__button">
-                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__pic" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="element__descrip">
-                        <h2 class="element__text">Гора Эльбрус</h2>
-                        <button type="button" class="element__button">
-                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__pic" src="./images/dombay.jpg" alt="Домбай">
-                    <div class="element__descrip">
-                        <h2 class="element__text">Домбай</h2>
-                        <button type="button" class="element__button">
-                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__pic" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="element__descrip">
-                        <h2 class="element__text">Гора Эльбрус</h2>
-                        <button type="button" class="element__button">
-                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__pic" src="./images/dombay.jpg" alt="Домбай">
-                    <div class="element__descrip">
-                        <h2 class="element__text">Домбай</h2>
-                        <button type="button" class="element__button">
-                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
-                        </button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__pic" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесск">
-                    <div class="element__descrip">
-                        <h2 class="element__text">Карачаево-Черкесск</h2>
-                        <button type="button" class="element__button">
-                            <img class="element__ike" src="./images/like.svg" alt="Лайк в виде сердца">
-                        </button>
-                    </div>
-                </li>
             </ul>
-        </section>       
+        </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <template id="card_template">
+        <li class="element">
+            <button type="button" class="element__delete">
+                <img class="element__delete-pic" src="./images/delete__button.png" alt="Кнопка удалить">
+            </button>
+            <img class="element__pic" src="" alt="Изображение">
+            <div class="element__descrip">
+                <h2 class="element__text"></h2>
+                <button type="button" class="element__button"></button>
+            </div>
+        </li>
+    </template>
+    <section class="opened-card">
+        <figure class="opened-card__container">
+            <button type="button" class="opened-card__close-button">
+                <img class="opened-card__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
+            </button>
+            <img class="opened-card__pic" src="./images/dombay.jpg" alt="Изображение">
+            <p class="opened-card__name"></p>
+        </figure>
+    </section>
     <section class="form">
         <form name="profile-form" class="form__container">
             <h2 class="form__title">Редактировать профиль</h2>
@@ -95,6 +62,17 @@
             <input name="form_profession" id="form-profession" class="form__item" type="text" placeholder="О себе">
             <button type="submit" class="form__save-button">Сохранить</button>
             <button type="button" class="form__close-button">
+                <img class="form__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
+            </button>
+        </form>
+    </section>
+    <section class="form form_card">
+        <form name="card_form" class="form__container form__container_card">
+            <h2 class="form__title form__title_card">Новое место</h2>
+            <input name="card_name" id="card-name" class="form__item form__item_card" type="text" placeholder="Название">
+            <input name="card_link" id="card-link" class="form__item form__item_card" type="text" placeholder="Ссылка на картинку">
+            <button name="card_save" type="submit" class="form__save-button form__save-button_card">Создать</button>
+            <button name="card_close" type="button" class="form__close-button form__close-button_card">
                 <img class="form__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
             </button>
         </form>

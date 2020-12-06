@@ -17,11 +17,13 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__container/elements__container.css);
 @import url(../blocks/element/element.css);
+@import url(../blocks/element/__delete/element__delete.css);
+@import url(../blocks/element/__delete-pic/element__delete-pic.css);
 @import url(../blocks/element/__pic/element__pic.css);
 @import url(../blocks/element/__descrip/element__descrip.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__button/element__button.css);
-@import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__button/_clicked/element__button_clicked.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/_opened/form_opened.css);
 @import url(../blocks/form/__container/form__container.css);
@@ -30,6 +32,18 @@
 @import url(../blocks/form/__close-button/form__close-button.css);
 @import url(../blocks/form/__close-button-picture/form__close-button-picture.css);
 @import url(../blocks/form/__save-button/form__save-button.css);
+@import url(../blocks/form/__container/_card/form__container_card.css);
+@import url(../blocks/form/__item/_card/form__item_card.css);
+@import url(../blocks/form/__save-button/_card/form__save-button_card.css);
+@import url(../blocks/form/__title/_card/form__title_card.css);
+@import url(../blocks/form/__close-button/_card/form__close-button_card.css);
+@import url(../blocks/opened-card/opened-card.css);
+@import url(../blocks/opened-card/_opened/opened-card_opened.css);
+@import url(../blocks/opened-card/__pic/opened-card__pic.css);
+@import url(../blocks/opened-card/__name/opened-card__name.css);
+@import url(../blocks/opened-card/__container/opened-card__container.css);
+@import url(../blocks/opened-card/__close-button/opened-card__close-button.css);
+@import url(../blocks/opened-card/__close-button-picture/opened-card__close-button-picture.css);
 @import url(../blocks/footer/footer.css);   
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
