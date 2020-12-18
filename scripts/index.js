@@ -47,13 +47,11 @@ const initialCards = [
     }
 ];
 
-
 function createFirstCards() {
     const listCards = initialCards.map(composeCard);
     cardList.append(...listCards);
 }
 createFirstCards();//формирование первоначальных картинок
-
 
 function composeCard({ name, link }){
     const newCard = cardTemplate.content.cloneNode(true);
@@ -78,7 +76,6 @@ function composeCard({ name, link }){
     return newCard;
 }//формирование карточки + работа лайка + удаление карточки + открытие вложенной картинки
 
-
 function openCardPicture ({ name, link }) {  
     openedCardName.textContent = name;
     openedCardPic.src = link;
@@ -86,21 +83,27 @@ function openCardPicture ({ name, link }) {
     openPopup(openedCard);
 }//открытие картинки
 
-
 openedCardClose.addEventListener('click', function(evt) {
     const targetPicture = evt.target.closest('.popup');
     closePopup(targetPicture);  
 });//закрытие картинки
 
-
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    enableValidation({
+        formSelector: '.popup__form',
+        inputSelector: '.popup__input',
+        submitButtonSelector: '.popup__button',
+        inactiveButtonClass: 'popup__button_disabled',
+        inputErrorClass: 'popup__input_type_error',
+        errorClass: 'popup__error_visible'
+    });//вызов валидации
+    document.addEventListener('keyup', escapePopup);//слушаем нажатие esc на открытых попапах
 } //открытие попапов
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 } //закрытие попапов
-
 
 function addNewCard (evt){
     evt.preventDefault();
@@ -119,12 +122,12 @@ function openForm() {
 
 function closeCardForm() {
     closePopup(cardForm);
-    cardFormContainer.reset()
+    cardFormContainer.reset();
 }//закрытие попапа формы карточки
 
 function closeForm() {
     closePopup(form);
-    formContainer.reset()
+    formContainer.reset();
 }//закрытие попапа формы профиля
 
 function formSubmitHandler (evt) {
@@ -136,6 +139,37 @@ function formSubmitHandler (evt) {
     closePopup(form);
 }//сохранение имени и профессии из попапа профиля
 
+function checkClass(popup) {
+    return popup.classList.contains('popup_opened');
+}//проверка, что попап открыт
+
+function escapePopup(evt) {
+    if (evt.keyCode === 27) {
+        if (checkClass(cardForm)) {
+            closePopup(cardForm);
+            cardFormContainer.reset();
+        } else if (checkClass(form)) {
+            closePopup(form);
+            formContainer.reset();
+        } else if (checkClass(openedCard)) {
+            closePopup(openedCard);
+        }
+    }
+}//закрытие попапа при нажатии esc
+
+function clickOutside(evt) {
+    if (evt.target == cardForm) {
+        closePopup(cardForm);
+        cardFormContainer.reset();
+    } else if (evt.target == form) {
+        closePopup(form);
+        formContainer.reset();
+    } else if (evt.target == openedCard) {
+        closePopup(openedCard);
+    }
+}//закрытие попапа при клике на оверлей
+
+document.addEventListener('click', clickOutside);//слушаем клик на оверлэй
 saveNewCardButton.addEventListener('click', addNewCard);//триггер для сохранения новой карточки
 cardFormOpen.addEventListener('click', ()=>openPopup(cardForm));//триггер открытия попапа для карточки
 cardFormClose.addEventListener('click', closeCardForm);//триггер закрытия попапа для карточки

@@ -56,27 +56,32 @@
         </figure>
     </section>
     <section class="popup popup_profile">
-        <form name="profile-form" class="form">
+        <form name="profile-form" class="form popup__form" novalidate>
             <h2 class="form__title">Редактировать профиль</h2>
-            <input name="form_name" id="form-name" class="form__item" type="text" placeholder="Имя">
-            <input name="form_profession" id="form-profession" class="form__item" type="text" placeholder="О себе">
-            <button type="submit" class="form__save-button">Сохранить</button>
+            <input name="form_name" id="form-name" class="form__item popup__input" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
+            <span class="popup__error form-name-error"></span>
+            <input name="form_profession" id="form-profession" class="form__item popup__input" type="text" placeholder="О себе" minlength="2" maxlength="200" required>
+            <span class="popup__error form-profession-error"></span>
+            <button type="submit" class="form__save-button popup__button">Сохранить</button>
             <button type="button" class="form__close-button">
                 <img class="form__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
             </button>
         </form>
     </section>
     <section class="popup popup_card">
-        <form name="card_form" class="form form_card">
+        <form name="card_form" class="form form_card popup__form" novalidate>
             <h2 class="form__title form__title_card">Новое место</h2>
-            <input name="card_name" id="card-name" class="form__item form__item_card" type="text" placeholder="Название">
-            <input name="card_link" id="card-link" class="form__item form__item_card" type="text" placeholder="Ссылка на картинку">
-            <button name="card_save" type="submit" class="form__save-button form__save-button_card">Создать</button>
+            <input name="card_name" id="card-name" class="form__item form__item_card popup__input" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="popup__error card-name-error"></span>
+            <input name="card_link" id="card-link" class="form__item form__item_card popup__input" placeholder="Ссылка на картинку" type="url" required>
+            <span class="popup__error card-link-error"></span>
+            <button name="card_save" type="submit" class="form__save-button form__save-button_card popup__button">Создать</button>
             <button name="card_close" type="button" class="form__close-button form__close-button_card">
                 <img class="form__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
             </button>
         </form>
     </section>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
