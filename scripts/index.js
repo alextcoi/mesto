@@ -19,6 +19,7 @@ const openedCard = document.querySelector('.popup_opened-card');
 const openedCardClose = document.querySelector('.opened-card__close-button');
 const openedCardName = openedCard.querySelector('.opened-card__name');
 const openedCardPic = openedCard.querySelector('.opened-card__pic');
+const popupActive = document.querySelector('.popup_opened');
 
 const initialCards = [
     {
@@ -64,14 +65,14 @@ function composeCard({ name, link }){
         evt.target.classList.toggle('element__button_clicked');
     });
     newCard.querySelector('.element__delete').addEventListener('click', function (evt) {
-        const targetCard = evt.target.closest('.element');
-        targetCard.remove();
+        evt.target.closest('.element').remove();
     });
     cardLink.addEventListener('click', function (evt) {
         const targetCard = evt.target.closest('.element');
-        const openedPicName = targetCard.querySelector('.element__text').textContent;
-        const openedPicLink = targetCard.querySelector('.element__pic').src;
-        openCardPicture({ name: openedPicName, link: openedPicLink });
+        openCardPicture({ 
+            name: targetCard.querySelector('.element__text').textContent, 
+            link: targetCard.querySelector('.element__pic').src
+        });
     });
     return newCard;
 }//формирование карточки + работа лайка + удаление карточки + открытие вложенной картинки
@@ -99,10 +100,13 @@ function openPopup(popup) {
         errorClass: 'popup__error_visible'
     });//вызов валидации
     document.addEventListener('keyup', escapePopup);//слушаем нажатие esc на открытых попапах
+    document.addEventListener('click', clickOutside);//слушаем клик на оверлэй
 } //открытие попапов
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keyup', escapePopup);
+    document.removeEventListener('click', clickOutside);
 } //закрытие попапов
 
 function addNewCard (evt){
@@ -132,10 +136,8 @@ function closeForm() {
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    let nameValue = formName.value;
-    let professionValue = formProfession.value;
-    name.textContent = nameValue;
-    profession.textContent = professionValue;
+    name.textContent = formName.value;
+    profession.textContent = formProfession.value;
     closePopup(form);
 }//сохранение имени и профессии из попапа профиля
 
@@ -144,33 +146,23 @@ function checkClass(popup) {
 }//проверка, что попап открыт
 
 function escapePopup(evt) {
-    if (evt.keyCode === 27) {
-        if (checkClass(cardForm)) {
-            closePopup(cardForm);
-            cardFormContainer.reset();
-        } else if (checkClass(form)) {
-            closePopup(form);
-            formContainer.reset();
-        } else if (checkClass(openedCard)) {
-            closePopup(openedCard);
-        }
+    const popupActive = document.querySelector('.popup_opened');
+    if (evt.key === "Escape" && checkClass(popupActive)) {
+        closePopup(popupActive);
+        cardFormContainer.reset();
+        formContainer.reset();
     }
 }//закрытие попапа при нажатии esc
 
 function clickOutside(evt) {
-    if (evt.target == cardForm) {
-        closePopup(cardForm);
+    if (checkClass(evt.target)) {
+        closePopup(evt.target);
         cardFormContainer.reset();
-    } else if (evt.target == form) {
-        closePopup(form);
         formContainer.reset();
-    } else if (evt.target == openedCard) {
-        closePopup(openedCard);
-    }
-}//закрытие попапа при клике на оверлей
+    };
+};//закрытие попапа при клике на оверлей
 
-document.addEventListener('click', clickOutside);//слушаем клик на оверлэй
-saveNewCardButton.addEventListener('click', addNewCard);//триггер для сохранения новой карточки
+cardFormContainer.addEventListener('submit', addNewCard);//триггер для сохранения новой карточки
 cardFormOpen.addEventListener('click', ()=>openPopup(cardForm));//триггер открытия попапа для карточки
 cardFormClose.addEventListener('click', closeCardForm);//триггер закрытия попапа для карточки
 editButton.addEventListener('click', openForm);//триггер открытия попапа для профиля

@@ -16,6 +16,7 @@
 
 .form__save-button:hover {
     background-color: rgba(0, 0, 0, .8);
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,5 +1,4 @@
-function enableValidation (initialObj) {
-    const obj = Object.assign({}, initialObj);
+function enableValidation (obj) {
     const formList = Array.from(document.querySelectorAll(obj.formSelector));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', function (evt) {
@@ -14,9 +13,10 @@ function setEventListeners (formElement, obj) {
     const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
     const buttonElement = formElement.querySelector(obj.submitButtonSelector);
     toggleButtonState(inputList, buttonElement, obj);
-
     inputList.forEach((inputElement) => {
-        checkInputValidity(formElement, inputElement, obj);
+        if (inputElement.value === '' || inputElement.validity.valid) {
+            hideInputError(formElement, inputElement, obj);
+        }
         inputElement.addEventListener('input', function () {
             checkInputValidity(formElement, inputElement, obj);
             toggleButtonState(inputList, buttonElement, obj);
