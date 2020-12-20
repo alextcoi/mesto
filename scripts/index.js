@@ -1,7 +1,7 @@
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelector('.form__close-button');
 const form = document.querySelector('.popup_profile');
-const name = document.querySelector('#name');
+const profileName = document.querySelector('#name');
 const profession = document.querySelector('#profession');
 const formName = document.querySelector('#form-name');
 const formProfession = document.querySelector('#form-profession');
@@ -19,7 +19,6 @@ const openedCard = document.querySelector('.popup_opened-card');
 const openedCardClose = document.querySelector('.opened-card__close-button');
 const openedCardName = openedCard.querySelector('.opened-card__name');
 const openedCardPic = openedCard.querySelector('.opened-card__pic');
-const popupActive = document.querySelector('.popup_opened');
 
 const initialCards = [
     {
@@ -67,13 +66,7 @@ function composeCard({ name, link }){
     newCard.querySelector('.element__delete').addEventListener('click', function (evt) {
         evt.target.closest('.element').remove();
     });
-    cardLink.addEventListener('click', function (evt) {
-        const targetCard = evt.target.closest('.element');
-        openCardPicture({ 
-            name: targetCard.querySelector('.element__text').textContent, 
-            link: targetCard.querySelector('.element__pic').src
-        });
-    });
+    cardLink.addEventListener('click', () => openCardPicture({name, link}));
     return newCard;
 }//формирование карточки + работа лайка + удаление карточки + открытие вложенной картинки
 
@@ -115,28 +108,13 @@ function addNewCard (evt){
     const inputLink = inputCardLink.value;
     const newCard = composeCard({ name: inputName, link: inputLink })
     cardList.prepend(newCard);
-    closeCardForm();
-}//создание новой карточки
-
-function openForm() {
-    formName.setAttribute('value', name.textContent);
-    formProfession.setAttribute('value', profession.textContent);
-    openPopup(form);
-}//открытие попапа для профиля
-
-function closeCardForm() {
     closePopup(cardForm);
     cardFormContainer.reset();
-}//закрытие попапа формы карточки
-
-function closeForm() {
-    closePopup(form);
-    formContainer.reset();
-}//закрытие попапа формы профиля
+}//создание новой карточки
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    name.textContent = formName.value;
+    profileName.textContent = formName.value;
     profession.textContent = formProfession.value;
     closePopup(form);
 }//сохранение имени и профессии из попапа профиля
@@ -147,24 +125,27 @@ function checkClass(popup) {
 
 function escapePopup(evt) {
     const popupActive = document.querySelector('.popup_opened');
-    if (evt.key === "Escape" && checkClass(popupActive)) {
+    if (evt.key === "Escape") {
         closePopup(popupActive);
-        cardFormContainer.reset();
-        formContainer.reset();
     }
 }//закрытие попапа при нажатии esc
 
 function clickOutside(evt) {
     if (checkClass(evt.target)) {
         closePopup(evt.target);
-        cardFormContainer.reset();
-        formContainer.reset();
     };
 };//закрытие попапа при клике на оверлей
 
 cardFormContainer.addEventListener('submit', addNewCard);//триггер для сохранения новой карточки
 cardFormOpen.addEventListener('click', ()=>openPopup(cardForm));//триггер открытия попапа для карточки
-cardFormClose.addEventListener('click', closeCardForm);//триггер закрытия попапа для карточки
-editButton.addEventListener('click', openForm);//триггер открытия попапа для профиля
-closeButton.addEventListener('click', closeForm);//триггер закрытия попапа для профиля
+cardFormClose.addEventListener('click', ()=>closePopup(cardForm));//триггер закрытия попапа для карточки
+
+editButton.addEventListener('click', () => {
+    formContainer.reset();//сбрасываю из инпутов введенные, но не сохраненные данные пользователя
+    formName.setAttribute('value', profileName.textContent);
+    formProfession.setAttribute('value', profession.textContent);
+    openPopup(form)
+});//триггер открытия попапа для профиля
+
+closeButton.addEventListener('click', ()=>closePopup(form));//триггер закрытия попапа для профиля
 formContainer.addEventListener('submit', formSubmitHandler);//триггер сохранения имени и профессии из попапа профиля
