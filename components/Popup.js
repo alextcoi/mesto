@@ -1,16 +1,19 @@
 export class Popup {
     constructor(popupSelector) {
       this._popup = document.querySelector(popupSelector);
+      this._clickOutside = this._clickOutside.bind(this);
+      this._handleEscClose = this._handleEscClose.bind(this);
     }
 
     open() {
         this._popup.classList.add('popup_opened');
+        document.addEventListener('keyup', this._handleEscClose);//слушаем нажатие esc на открытых попапах
     }//открытие попапов
 
     close() {
         this._popup.classList.remove('popup_opened');
-        document.removeEventListener('keyup', () => this._handleEscClose());//убираем слушатели
-        document.removeEventListener('click', () => this._clickOutside());//убираем слушатели
+        document.removeEventListener('keyup', this._handleEscClose);//убираем слушатели
+        document.removeEventListener('click', this._clickOutside);//убираем слушатели
     }//закрытие попапов
 
     _handleEscClose(evt) {
@@ -25,8 +28,7 @@ export class Popup {
         };
     }//закрытие попапа при клике на оверлей
 
-    setEventlListeners() {
-        document.addEventListener('keyup', (evt) => this._handleEscClose(evt));//слушаем нажатие esc на открытых попапах
-        document.addEventListener('click', (evt) => this._clickOutside(evt));//слушаем клик на оверлэй
+    setEventListeners() {
+        document.addEventListener('click', this._clickOutside);//слушаем клик на оверлэй
     }
 }//родительский класс для работы с попапами

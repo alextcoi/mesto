@@ -1,13 +1,13 @@
-import { FormValidator } from './FormValidator.js';
-import { data, closeButton, cardFormClose } from '../src/index.js';
 import { Popup } from './Popup.js';
 
 export class PopupWithForm extends Popup {
-    constructor(popupSelector, {handleFormSubmit}) {
+    constructor(popupSelector, closeButton, {handleFormSubmit}) {
       super(popupSelector);
-      this._popup = document.querySelector(popupSelector);
       this._form = this._popup.querySelector('.popup__form');
       this._handleFormSubmit = handleFormSubmit;
+      this._closeButton = this._form.querySelector(closeButton);
+      this.close = this.close.bind(this);
+      this._formSubmitter = this._formSubmitter.bind(this);
     }
 
     _getInputValues() {
@@ -19,29 +19,24 @@ export class PopupWithForm extends Popup {
       return this._formValues;
     }
 
-    setEventlListeners() {
-      super.setEventlListeners();
-      cardFormClose.addEventListener('click', () => this.close());//слушаем клик на кнопку закрытия
-      closeButton.addEventListener('click', () => this.close());//слушаем клик на кнопку закрытия
-      this._form.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-        this._handleFormSubmit(this._getInputValues());
-      })
+    setEventListeners() {
+      super.setEventListeners();
+      this._closeButton.addEventListener('click', this.close);//слушаем клик на кнопку закрытия
+      this._form.addEventListener('submit', this._formSubmitter);
+    }
+
+    _formSubmitter (evt) {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
     }
 
     open() {
       super.open();
-      const formValidator = new FormValidator(data);
-      formValidator.enableValidation();// включаем валидацию;
     }
 
     close() {
-      cardFormClose.removeEventListener('click', () => this.close());//слушаем клик на кнопку закрытия
-      closeButton.removeEventListener('click', () => this.close());//слушаем клик на кнопку закрытия
-      this._form.removeEventListener('submit', (evt) => {
-        evt.preventDefault();
-        this._handleFormSubmit(this._getInputValues());
-      })
+      this._closeButton.removeEventListener('click', this.close);//слушаем клик на кнопку закрытия
+      this._form.removeEventListener('submit', this._formSubmitter);
       this._form.reset();
       super.close();
     }

@@ -10,6 +10,7 @@ export class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.element__pic').src = this._link;
+        this._element.querySelector('.element__pic').alt = this._name;
         this._element.querySelector('.element__text').textContent = this._name;
     
         return this._element;
