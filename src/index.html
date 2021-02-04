@@ -4,26 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
     <header class="header">
         <a class="logo" href="#" target="_blank">
-            <img class="logo__picture" src="./images/logo.svg" alt="Логотип Место">
+            <img class="logo__picture" src="<%=require('../images/logo.svg')%>" alt="Логотип Место">
         </a>
     </header>
     <main class="main">
         <section class="profile">
-            <img class="profile__avatar" src="./images/profile.jpg" alt="Жак-Ив Кусто">
+            <img class="profile__avatar" src="<%=require('../images/profile.jpg')%>" alt="Жак-Ив Кусто">
             <div class="profile__info">
                 <h1 id="name" class="profile__title">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__edit-button">
-                    <img class="profile__edit-button-picture" src="./images/edit_button.svg" alt="Кнопка Редактировать">
+                    <img class="profile__edit-button-picture" src="<%=require('../images/edit_button.svg')%>" alt="Кнопка Редактировать">
                 </button>
                 <p id="profession" class="profile__subtitle">Исследователь океана</p>
             </div>
             <button type="button" class="profile__add-button">
-                <img class="profile__add-button-picture" src="./images/add_button.svg" alt="Кнопка Добавить">
+                <img class="profile__add-button-picture" src="<%=require('../images/add_button.svg')%>" alt="Кнопка Добавить">
             </button>
         </section>
         <section class="elements">
@@ -37,9 +36,9 @@
     <template id="card_template" class="default-card">
         <li class="element">
             <button type="button" class="element__delete">
-                <img class="element__delete-pic" src="./images/delete__button.png" alt="Кнопка удалить">
+                <img class="element__delete-pic" src="<%=require('../images/delete__button.png')%>" alt="Кнопка удалить">
             </button>
-            <img class="element__pic" src="./images/dombay.jpg" alt="Изображение">
+            <img class="element__pic" src="<%=require('../images/dombay.jpg')%>" alt="Изображение">
             <div class="element__descrip">
                 <h2 class="element__text"></h2>
                 <button type="button" class="element__button"></button>
@@ -49,38 +48,37 @@
     <section class="popup popup_opened-card">
         <figure class="opened-card">
             <button type="button" class="opened-card__close-button">
-                <img class="opened-card__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
+                <img class="opened-card__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
             </button>
-            <img class="opened-card__pic" src="./images/dombay.jpg" alt="Изображение">
+            <img class="opened-card__pic" src="<%=require('../images/dombay.jpg')%>" alt="Изображение">
             <p class="opened-card__name"></p>
         </figure>
     </section>
     <section class="popup popup_profile">
         <form name="profile-form" class="form popup__form" novalidate>
             <h2 class="form__title">Редактировать профиль</h2>
-            <input name="form_name" id="form-name" class="form__item popup__input" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
+            <input name="form_name" id="form-name" class="form__item form__item_name popup__input" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
             <span class="popup__error form-name-error"></span>
-            <input name="form_profession" id="form-profession" class="form__item popup__input" type="text" placeholder="О себе" minlength="2" maxlength="200" required>
+            <input name="form_profession" id="form-profession" class="form__item form__item_title popup__input" type="text" placeholder="О себе" minlength="2" maxlength="200" required>
             <span class="popup__error form-profession-error"></span>
             <button type="submit" class="form__save-button popup__button">Сохранить</button>
             <button type="button" class="form__close-button">
-                <img class="form__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
+                <img class="form__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
             </button>
         </form>
     </section>
     <section class="popup popup_card">
         <form name="card_form" class="form form_card popup__form" novalidate>
             <h2 class="form__title form__title_card">Новое место</h2>
-            <input name="card_name" id="card-name" class="form__item form__item_card popup__input" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+            <input name="name" id="card-name" class="form__item form__item_card popup__input" type="text" placeholder="Название" minlength="2" maxlength="30" required>
             <span class="popup__error card-name-error"></span>
-            <input name="card_link" id="card-link" class="form__item form__item_card popup__input" placeholder="Ссылка на картинку" type="url" required>
+            <input name="link" id="card-link" class="form__item form__item_card popup__input" placeholder="Ссылка на картинку" type="url" required>
             <span class="popup__error card-link-error"></span>
             <button name="card_save" type="submit" class="form__save-button form__save-button_card popup__button">Создать</button>
             <button name="card_close" type="button" class="form__close-button form__close-button_card">
-                <img class="form__close-button-picture" src="images/close_icon.svg" alt="Кнопка Закрыть">
+                <img class="form__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
             </button>
         </form>
     </section>
-    <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

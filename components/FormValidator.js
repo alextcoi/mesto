@@ -19,7 +19,7 @@ export class FormValidator {
         });
     };//проходим по формам для валидации
 
-    _setEventListeners = (formElement) => {
+    _setEventListeners (formElement) {
         const inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
         const buttonElement = formElement.querySelector(this._submitButtonSelector);
         this._toggleButtonState(inputList, buttonElement);
@@ -34,7 +34,7 @@ export class FormValidator {
         });
     };//проходим по инпутам формы, проверяем их на валидность до внесения данных и во время внесения
 
-    _checkInputValidity = (formElement, inputElement) => {
+    _checkInputValidity (formElement, inputElement) {
         if (!inputElement.validity.valid) {
           this._showInputError(formElement, inputElement, inputElement.validationMessage);
         } else {
@@ -43,7 +43,7 @@ export class FormValidator {
     };//есть ошибки в инпутах или нет
 
 
-    _toggleButtonState = (inputList, buttonElement) => {
+    _toggleButtonState (inputList, buttonElement) {
         if (this._hasInvalidInput(inputList)) {
           buttonElement.disabled = true;
           buttonElement.classList.add(this._inactiveButtonClass);
@@ -53,20 +53,20 @@ export class FormValidator {
         }
     };//переключатель для активации кнопки при валидности данных
     
-    _hasInvalidInput = (inputList) => {
+    _hasInvalidInput (inputList) {
         return inputList.some((inputElement) => {
           return !inputElement.validity.valid;
         })
     };//возвращаем правда/неправда при валидности инпута в форме
     
-    _showInputError = (formElement, inputElement, errorMessage) => {
+    _showInputError (formElement, inputElement, errorMessage) {
         const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._inputErrorClass);
         errorElement.textContent = errorMessage;
         errorElement.classList.add(this._errorClass);
     };//если данные не валидны - выдаем ошибку
       
-    _hideInputError = (formElement, inputElement) => {
+    _hideInputError (formElement, inputElement) {
         const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.remove(this._inputErrorClass);
         errorElement.classList.remove(this._errorClass);

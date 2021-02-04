@@ -1,11 +1,9 @@
-
-import {openedCard, openedCardName, openedCardPic, openPopup} from './index.js';
-
 export class Card {
-    constructor(data, cardSelector) {
+    constructor({data, handleCardClick}, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }//определяем параметры карточки
 
     generateCard() {
@@ -29,13 +27,6 @@ export class Card {
         this._element.querySelector('.element__delete').addEventListener('click', function (evt) {
             evt.target.closest('.element').remove();
         });
-        this._element.querySelector('.element__pic').addEventListener('click', () => this._openCardPicture());
+        this._element.querySelector('.element__pic').addEventListener('click', () => this._handleCardClick());
     }//навешиваем основные обработчики на карточку - лайк, удаление, открытие картинки
-
-    _openCardPicture () {  
-        openedCardName.textContent = this._name;
-        openedCardPic.src = this._link;
-        openedCardPic.alt = this._name;
-        openPopup(openedCard);
-    }//открытие картинки
 }
