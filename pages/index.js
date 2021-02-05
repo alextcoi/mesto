@@ -57,13 +57,15 @@ const dataProfile = {
 };
 
 const profileFormValidator = new FormValidator(dataProfile);
+profileFormValidator.enableValidation();// включаем валидацию для профиля
 const cardFormValidator = new FormValidator(dataCard);
+cardFormValidator.enableValidation();// включаем валидацию для карточек
 const popupImage = new PopupWithImage('.popup_opened-card', '.opened-card__name', '.opened-card__pic', '.opened-card__close-button');
+popupImage.setEventListeners();
 
 const initialCardList = new Section({ items: initialCards, renderer: (item) => {
     const card = new Card({data: item, handleCardClick: () => {
         popupImage.open(item.name, item.link);
-        popupImage.setEventListeners();
     },},'.default-card');
     const cardElement = card.generateCard();
     initialCardList.addItem(cardElement);
@@ -74,7 +76,6 @@ initialCardList.renderItems();//рисуем первые карточки с ф
 const popupCardForm = new PopupWithForm('.popup_card', '.form__close-button_card', {handleFormSubmit: (item) => {
     const card = new Card({data: item, handleCardClick: () => {
         popupImage.open(item.name, item.link)
-        popupImage.setEventListeners();
     },},'.default-card');
     const cardElement = card.generateCard();
     initialCardList.preaddItem(cardElement);
@@ -84,7 +85,6 @@ const popupCardForm = new PopupWithForm('.popup_card', '.form__close-button_card
 cardFormOpen.addEventListener('click', () => {
     popupCardForm.open();
     popupCardForm.setEventListeners();//слушаем события на форме с карточками
-    cardFormValidator.enableValidation();// включаем валидацию для карточек
 });//триггер открытия формы для добавления новой карточки и добавление слушателей на сабмит формы
 const currentProfile = new UserInfo({userName: '.profile__title', userTitle: '.profile__subtitle'});//забираем текущее имя и титул
 
@@ -96,7 +96,6 @@ const popupProfileForm = new PopupWithForm('.popup_profile', '.form__close-butto
 editButton.addEventListener('click', () => {
     popupProfileForm.open();
     popupProfileForm.setEventListeners();
-    profileFormValidator.enableValidation();// включаем валидацию для профиля
     const user = currentProfile.getUserInfo();
     formName.setAttribute('value', user.name);
     formProfession.setAttribute('value', user.profession);

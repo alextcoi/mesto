@@ -13,7 +13,6 @@ export class Popup {
     close() {
         this._popup.classList.remove('popup_opened');
         document.removeEventListener('keyup', this._handleEscClose);//убираем слушатели
-        document.removeEventListener('click', this._clickOutside);//убираем слушатели
     }//закрытие попапов
 
     _handleEscClose(evt) {
