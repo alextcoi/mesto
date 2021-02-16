@@ -1,0 +1,14 @@
+.profile__avatar-edit-button {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    margin: 0;
+}
+
+@media screen and (max-width: 510px) {
+    .profile__avatar-edit-button {
+        width: 20px;
+        height: 20px;
+    }    
+}
+    

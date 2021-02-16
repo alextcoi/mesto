@@ -11,6 +11,7 @@
     border-radius: 2px;
     margin: 48px auto 0 auto;
     transition: background-color .5s ease-out;
+    border: none;
     padding: 0;
 }
 
