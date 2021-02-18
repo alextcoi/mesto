@@ -57,8 +57,8 @@
         <form name="card-delete-form" class="form form_delete-card popup__form" novalidate>
             <h2 class="form__title">Вы уверены?</h2>
             <button type="submit" class="form__save-button popup__button">Да</button>
-            <button type="button" class="popup__close-button form__close-button_delete-card">
-                <img class="popup__close-button-picture form__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
+            <button type="button" class="popup__close-button">
+                <img class="popup__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
             </button>
         </form>
     </section>
@@ -68,8 +68,8 @@
             <input name="avatar" id="profile-pic-link" class="form__item form__item_card popup__input" placeholder="Ссылка на картинку" type="url" required>
             <span class="popup__error profile-pic-link-error"></span>
             <button type="submit" class="form__save-button popup__button">Сохранить</button>
-            <button type="button" class="popup__close-button form__close-button_profile-pic">
-                <img class="popup__close-button-picture form__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
+            <button type="button" class="popup__close-button">
+                <img class="popup__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
             </button>
         </form>
     </section>
@@ -103,8 +103,8 @@
             <input name="link" id="card-link" class="form__item form__item_card popup__input" placeholder="Ссылка на картинку" type="url" required>
             <span class="popup__error card-link-error"></span>
             <button name="card_save" type="submit" class="form__save-button form__save-button_card popup__button">Создать</button>
-            <button name="card_close" type="button" class="popup__close-button form__close-button_card">
-                <img class="popup__close-button-picture form__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
+            <button name="card_close" type="button" class="popup__close-button popup__close-button_card">
+                <img class="popup__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
             </button>
         </form>
     </section>

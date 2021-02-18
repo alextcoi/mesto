@@ -1,0 +1,6 @@
+@media screen and (max-width: 768px) {
+    .popup__close-button_card {
+        top: -20px;
+        right: -20px;
+    }
+}
