@@ -65,7 +65,7 @@
     <section class="popup popup_profile-picture">
         <form name="profile-pic-form" class="form form_profile-pic popup__form" novalidate>
             <h2 class="form__title">Обновить аватар</h2>
-            <input name="pic_link" id="profile-pic-link" class="form__item form__item_card popup__input" placeholder="Ссылка на картинку" type="url" required>
+            <input name="avatar" id="profile-pic-link" class="form__item form__item_card popup__input" placeholder="Ссылка на картинку" type="url" required>
             <span class="popup__error profile-pic-link-error"></span>
             <button type="submit" class="form__save-button popup__button">Сохранить</button>
             <button type="button" class="form__close-button form__close-button_profile-pic">
@@ -75,7 +75,7 @@
     </section>
     <section class="popup popup_opened-card">
         <figure class="opened-card">
-            <button type="button" class="opened-card__close-button">
+            <button type="button" class="opened-card__close-button form__close-button">
                 <img class="opened-card__close-button-picture" src="<%=require('../images/close_icon.svg')%>" alt="Кнопка Закрыть">
             </button>
             <img class="opened-card__pic" src="<%=require('../images/dombay.jpg')%>" alt="Изображение">

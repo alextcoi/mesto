@@ -92,7 +92,7 @@ export class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                avatar: item.pic_link
+                avatar: item.avatar
             }),
             })
             .then((res) => {
