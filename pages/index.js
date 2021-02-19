@@ -105,22 +105,20 @@ const popupPicForm = new PopupWithForm('.popup_profile-picture', {handleFormSubm
 popupPicForm.setEventListeners();//слушаем события на форме с аватаром
 
 const cardFormValidator = new FormValidator(validateParameters, '.form_card');
+cardFormValidator.enableValidation();
 const picFormValidator = new FormValidator(validateParameters, '.form_profile-pic');
+picFormValidator.enableValidation();
 const profileFormValidator = new FormValidator(validateParameters, '.form_profile');
+profileFormValidator.enableValidation();
 
-cardFormOpen.addEventListener('click', () => {
-    popupCardForm.open();
-    cardFormValidator.enableValidation();
-});//триггер открытия формы для добавления новой карточки и добавление слушателей на сабмит формы
+cardFormOpen.addEventListener('click', () => {popupCardForm.open();});
+//триггер открытия формы для добавления новой карточки и добавление слушателей на сабмит формы
 
-editPicButton.addEventListener('click', () => {
-    popupPicForm.open();
-    picFormValidator.enableValidation();
-});//триггер на открытие формы для редактирования картинки профиля
+editPicButton.addEventListener('click', () => {popupPicForm.open()});
+//триггер на открытие формы для редактирования картинки профиля
 
 editButton.addEventListener('click', () => {
-    popupProfileForm.open();
-    profileFormValidator.enableValidation();//
+    popupProfileForm.open();    
     const user = currentProfile.getUserInfo();
     formName.setAttribute('value', user.name);
     formProfession.setAttribute('value', user.profession);
